@@ -5,7 +5,7 @@
 const char txtRound[]= "oii";
 char txtRoundNumber[10]= "";
 const char txtFileExtension[]=".txt";
-char finalFile[60]="MAPA_vs_TIME/";
+char finalFile[60]="logs/";
 int allypoints = 0, enemypoints = 0;
 char resultadopartida[20];
 
@@ -28,7 +28,7 @@ int writeLog(int roundcounter,const char *logText){
     // Fecha o log
     fclose(fp);
     testLogDir();
-    strcpy(finalFile,"MAPA_vs_TIME/");
+    strcpy(finalFile,"logs/");
     return 0;
 }
 
