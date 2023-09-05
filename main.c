@@ -2,7 +2,7 @@
 #include <string.h>
 #include <ctype.h>
 
-const char txtRound[]= "oii";
+const char txtRound[]= "logs/";
 char txtRoundNumber[10]= "";
 const char txtFileExtension[]=".txt";
 char finalFile[60]="logs/";

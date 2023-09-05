@@ -8,37 +8,21 @@ const char txtFileExtension[]=".txt";
 char finalFile[60]="logs/";
 int allypoints = 0, enemypoints = 0;
 char resultadopartida[20];
-int clutch=0,pistol=0,fullbuy=0,eco=0,antieco=0,situacional=0,posplant=0,retake=0;
+/*
+int clutch=0;
 
 char* clutchCheck(){
-    if (clutch!=0){
+    if(clutch!=0){
         return "Sim";
     }
     else{
         return "Nao";
     }
 }
-/*
-int pistolCheck(){
-
-}
-
-int fullbuyCheck(){
-
-}
-
-int ecoCheck(){
-
-}
-
-int antiecoCheck(){
-
-}
 */
 
 int resetLogDir(){
-	strcpy(finalFile,"logs/");
-	return 0;
+    strcpy(finalFile,"logs/");
 }
 
 int testLogDir(){
@@ -47,7 +31,6 @@ int testLogDir(){
 }
 
 int writeLog(int roundcounter,const char *logText){
-	resetLogDir();
     // Copia o valor de roundcounter para txtRoundNumber, a transformando em string
     snprintf(txtRoundNumber, sizeof(txtRoundNumber), "%d", roundcounter);
     // Concatena 3vezes strings à variável finalFile, no final a transformando no diretório do log.
@@ -61,6 +44,7 @@ int writeLog(int roundcounter,const char *logText){
     // Fecha o log
     fclose(fp);
     testLogDir();
+    resetLogDir();
     return 0;
 }
 
@@ -109,27 +93,22 @@ int main(void) {
             for (int i = 0; input[i]; i++) {
                 input[i] = tolower(input[i]);
             }
-            if (strcmp(input, "clutch") == 0) {
-                clutch=1;
-            }
+
             if (strcmp(input, "w") == 0) {
                 allypoints++;
-                writeLog(roundNum,"vitoriaaaaaa");
+                writeLog(roundNum,input);
                 roundNum++;
-                printf("%dx%d\n", allypoints,enemypoints);
-            }
-            if (strcmp(input, "l") == 0) {
+            } else if (strcmp(input, "l") == 0) {
                 enemypoints++;
-                writeLog(roundNum,"derrotaaaaaaaaaaaaaaaa");
+                writeLog(roundNum,input);
                 roundNum++;
-                printf("%dx%d\n", allypoints,enemypoints);
             }
             else{
                 writeLog(roundNum,input);
             }
             
 
-            
+            printf("%dx%d\n", allypoints,enemypoints);
 
             if(matchEnd()!=0){
                 break;
